@@ -1,9 +1,13 @@
 import streamlit as st
 from transformers import pipeline
+import torch
+
+# Check if a GPU is available, use it; otherwise, use the CPU
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 @st.cache(allow_output_mutation=True)
 def load_summarizer():
-    model = pipeline("summarization", device=0)
+    model = pipeline("summarization", device=device)
     return model
 
 
