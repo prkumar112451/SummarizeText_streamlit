@@ -2,3 +2,4 @@ transformers
 flask
 torch
 streamlit
+altair==4.1.0
